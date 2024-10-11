@@ -4,6 +4,7 @@
 import os
 import csv
 import anthropic
+from prompts import *
 
 # Set up the Anthropic API key
 if not os.getenv("ANTHROPIC_API_KEY"):
@@ -38,7 +39,7 @@ def analyzer_agent(sample_data):
         model=sonnet,
         max_tokens=400,  # Limit the response to 400 tokens
         temperature=0.1,  # Set a low temperature for more focuse, deterministic output
-        syste=ANALYZER_SYSTEM_PROMPT,  # Use the predefined system prompt for the analyzer
+        system=ANALYZER_SYSTEM_PROMPT,  # Use the predefined system prompt for the analyzer
         messages=[
             {
                 "role": "user",
