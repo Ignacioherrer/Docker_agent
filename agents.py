@@ -49,3 +49,33 @@ def analyzer_agent(sample_data):
         ]
     )
     return message.content[0].text  # Return the text content of the first message
+
+# Create the Generator Agent
+def generator_agent(analysis_result, sample_data, num_rows=30):
+    message = client.messages.create(
+        model=sonnet,
+        max_tokens=1500,  # Allow for a longer response (1500 tokens)
+        temperature=1,   # Set a high temperature for more creative, diverse output 
+        system=GENERATOR_SYSTEM_PROMPT,
+        message=[
+            {
+                "role": "user",
+                "content": GENERATOR_USER_PROMPT.format(
+                    num_rows=num_rows,
+                    analysis_result=analysis_result,
+                    sample_data=sample_data
+                )
+                # Format the user prompt with the number of rows to generate
+                # The analysis result, and the sample data
+            }
+        ]
+    )
+    return message.content[0].text
+
+# Main execution flow
+
+# Get input from the user
+file_path = input("\nEnter the name of your CSV file: ")
+file_path = os.path.join("/app/data", file_path)
+desired_rows = int(input("Enter the number of rows you want in the new dataset: "))
+                
