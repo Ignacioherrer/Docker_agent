@@ -78,4 +78,7 @@ def generator_agent(analysis_result, sample_data, num_rows=30):
 file_path = input("\nEnter the name of your CSV file: ")
 file_path = os.path.join("/app/data", file_path)
 desired_rows = int(input("Enter the number of rows you want in the new dataset: "))
-                
+
+# Read the sample data from the input CSV file
+sample_data = read_csv(file_path)
+sample_data_str = "\n".join([",".join(row) for row in sample_data])  # Converts 2D list to a single string 
