@@ -82,3 +82,10 @@ desired_rows = int(input("Enter the number of rows you want in the new dataset: 
 # Read the sample data from the input CSV file
 sample_data = read_csv(file_path)
 sample_data_str = "\n".join([",".join(row) for row in sample_data])  # Converts 2D list to a single string 
+
+print("\nLaunching team of Agents...")
+# Analyze the sample data using the Analyzer Agent
+analysis_result = analyzer_agent(sample_data_str)
+print("\n#### Analyzer Agent output: ####\n")
+print(analysis_result)
+print("\n--------------------------------------------\n\nGenerating new data...")
