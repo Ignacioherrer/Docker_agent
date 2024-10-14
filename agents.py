@@ -89,3 +89,9 @@ analysis_result = analyzer_agent(sample_data_str)
 print("\n#### Analyzer Agent output: ####\n")
 print(analysis_result)
 print("\n--------------------------------------------\n\nGenerating new data...")
+
+# Set up the output file
+output_file = "/app/data/new_dataset.csv"
+headers = sample_data[0]
+# Create the output file with headers
+save_to_csv("", output_file, headers)
