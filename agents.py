@@ -95,3 +95,7 @@ output_file = "/app/data/new_dataset.csv"
 headers = sample_data[0]
 # Create the output file with headers
 save_to_csv("", output_file, headers)
+
+batch_size = 30  # Number of rows to generate in each batch 
+generated_rows = 0  # Counter to keep track of how many rows have been generated
+
