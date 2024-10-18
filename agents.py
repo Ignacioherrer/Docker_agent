@@ -99,3 +99,15 @@ save_to_csv("", output_file, headers)
 batch_size = 30  # Number of rows to generate in each batch 
 generated_rows = 0  # Counter to keep track of how many rows have been generated
 
+# Generate data in batches until we reach the desired number of rows
+while generated_rows < desired_rows:
+    # Calculate how many rows to generate in this batch
+    rows_to_generate = min(batch_size, desired_rows - generated_rows)
+    # Generate a batch of data using the Generator agent 
+    generated_data = generator_agent(analysis_result, sample_data_str, rows_to_generate)
+    # Append the generate data to the output file
+    save_to_csv(generated_data, output_file)
+    # Update the count of generated rows
+    generated_rows += rows_to_generate
+    # Print progress update
+    print(f"Generated {generated_rows} rows out of {desired_rows}")
