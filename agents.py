@@ -111,3 +111,6 @@ while generated_rows < desired_rows:
     generated_rows += rows_to_generate
     # Print progress update
     print(f"Generated {generated_rows} rows out of {desired_rows}")
+
+# Inform the user that the process is complete
+print(f"\nGenerated data has been saved to {output_file}")
